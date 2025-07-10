@@ -85,5 +85,22 @@ window.addEventListener('scroll', animateOnScroll);
 // Prevent form submission
 document.querySelector('.contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    alert('Form submission is disabled in this demo. In a real implementation, this would send your message.');
+Swal.fire({
+    title: "Form submitted successfully",  // Title message
+    text: "We will reply as soon as possible",  // Additional info
+    icon: "success",  // Success alert
+    confirmButtonText: "OK"  // Optional: Custom button text
+})
+.then((result) => {
+    // Agar user ne 'OK' button press kia
+    if (result.isConfirmed) {
+        // Form fields ko reset kar rahe hain
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("subject").value = "";
+        document.getElementById("message").value = "";
+    }
+});
+
+    
 });
